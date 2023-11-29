@@ -1,7 +1,15 @@
+"use client";
 import Image from 'next/image'
 import styles from './page.module.css'
+import axios from 'axios'
 
 export default function Home() {
+  console.log("it is server side by default.")
+  axios.get("https://jsonplaceholder.typicode.com/posts/1").then((res) => {
+    console.log("This api response is on build time....", res)
+  }).catch(err => {
+    console.log("Errorl", err)
+  })
   return (
     <main className={styles.main}>
       <div className={styles.description}>
